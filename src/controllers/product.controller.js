@@ -7,7 +7,7 @@ const createProduct = async (req, res) => {
     const reqBody = req.body;
 
     if (req.file) {
-      reqBody.product_image = req.file.filename;
+      reqBody.product_image  = req.file.filename;
     } else {
       throw new Error("Product image is required!");
     }
@@ -19,6 +19,7 @@ const createProduct = async (req, res) => {
       message: "Product create successfully!",
       data: createdProduct,
     });
+    console.log(createdProduct)
   } catch (error) {
     res.status(400).json({
       success: false,

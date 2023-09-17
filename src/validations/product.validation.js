@@ -5,7 +5,7 @@ const createProduct = {
   body: Joi.object({
     product_name: Joi.string().required().trim(),
     product_description: Joi.string().required().trim(),
-    product_image: Joi.string().allow(),
+    product_image: Joi.string().allow,
     price: Joi.number().required(),
     category: Joi.string().required(),
   }),

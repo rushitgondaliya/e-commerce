@@ -3,6 +3,7 @@ const { upload } = require("../../middlewares/upload");
 const validate = require("../../middlewares/validate");
 const { productValidation } = require("../../validations");
 const { productController } = require("../../controllers");
+const auth =require("../../middlewares/auth")
 
 const router = express.Router();
 
@@ -10,6 +11,7 @@ const router = express.Router();
 router.post(
   "/create-product",
   upload.single("product_image"),
+  auth(),
   validate(productValidation.createProduct),
   productController.createProduct
 );

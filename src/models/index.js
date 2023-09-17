@@ -4,3 +4,4 @@ module.exports.Product=require("./product.model");
 module.exports.Order=require("./order.model");
 module.exports.Cart=require("./cart.model");
 module.exports.SubCategory =require("./subCategory");
+module.exports.Token=require("./token.model")

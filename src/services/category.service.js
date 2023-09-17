@@ -28,7 +28,7 @@ const deleteCategory = async (categoryId) => {
 
 //category details by name
 const getCategoryByName = async (category_name) => {
-  return Category.findOne();
+  return Category.findOne({ category_name });
 };
 
 
