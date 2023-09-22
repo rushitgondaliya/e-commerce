@@ -37,5 +37,14 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+userSchema.pre("save", async function (next) {
+  const User = this;
+
+  if (User.isModified("password")) {
+    User.password = bcrypt.hash(User.password, 8);
+  }
+  next();
+});
+
 const User = mongoose.model("users", userSchema);
 module.exports = User;

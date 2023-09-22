@@ -1,4 +1,4 @@
-const { userService} = require("../services");
+const { userService , emailService} = require("../services");
 
 /** create user */
 const createUser = async (req, res) => {
@@ -97,10 +97,32 @@ const deleteUser = async (req, res) => {
   }
 };
 
+/** Send mail to reqested email */
+const sendMail = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    const sendEmail = await emailService.sendMail(
+      reqBody.email,
+      reqBody.subject,
+      reqBody.text
+    );
+    if (!sendEmail) {
+      throw new Error("Something went wrong, please try again or later.");
+    }
+
+    res
+      .status(200)
+      .json({ success: true, message: "Email send successfully!" });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
+
 module.exports = {
   createUser,
   getUserList,
   getUserDetails,
   updateDetails,
   deleteUser,
+  sendMail,
 };
