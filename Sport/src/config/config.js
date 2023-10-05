@@ -35,7 +35,7 @@ module.exports = {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     },
-  }, 
+  },
   base_url: envVars.BASE_URL,
   jwt: {
     secret_key: envVars.JWT_SECRET_KEY,
